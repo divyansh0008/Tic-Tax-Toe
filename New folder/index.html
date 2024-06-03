@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+    width: 600px;
+    
+    gap: 10px;
+}
+.box{
+    height: 150px;
+    width: 150px;
+    font-size: 20px;
+    border-radius: .5rem;
+    background-color: #6665DD;
+    font-size: 50px;
+    font-weight: 500;
+    
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #9B9ECE;
+}
+.reset{
+    margin-top: 40px;
+    height: 60px;
+    width: 120px;
+    font-size: 25px;
+    background-color: #ACADBC;
+    color: #000500;
+    border-radius: .5rem;
+
+}
+.winner{
+    height: 50px;
+    width: 150px;
+    background-color: #473BF0;
+    font-size: 30px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    margin-top: 50px;
+    /* visibility: hidden;
+    margin-top: 50px; */
+}
+.heading{
+    color: #000500;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="heading"><h1>Tic Tac Toe</h1></div>
+        
+    </div>
+    <div class="div">
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        
+    </div>
+    <button class="reset">Reset</button>
+    
+    <script>let boxes=document.querySelectorAll(".box");
+        let body=document.querySelector("body");
+        let turno=true;
+        
+        
+        const winpatterns=[
+            [0,1,2],
+            [0,3,6],
+            [0,4,8],
+            [1,4,7],
+            [2,5,8],
+            [2,4,6],
+            [3,4,5],
+            [6,7,8]
+            
+            
+        ];
+        boxes.forEach((box)=>{
+            box.addEventListener("click", ()=>{
+                console.log("box was clicked");
+                if(turno===true){
+                    box.innerText="O";
+                    turno=false;
+        
+                }
+                else{
+                    box.innerText="X";
+                    turno=true;
+                }
+                box.disabled=true;
+                checkwinner();
+            })
+        })
+        
+        let checkwinner=()=>{
+            for (i of winpatterns){
+                
+                let pos1= boxes[i[0]].innerText;
+                let pos2 =boxes[i[1]].innerText;
+                let pos3= boxes[i[2]].innerText;
+                if(pos1!="" && pos2!=""  && pos3!="" ){
+                    if(pos1===pos2 && pos2==pos3 && pos3==pos1){
+                        console.log("winner");
+                        winner(pos1);
+                    }
+                }
+              }
+        }
+        
+        document.querySelector(".reset").addEventListener("click",()=>{
+            for(i of boxes){
+                i.innerText="";
+                i.disabled= false;
+                turno=true;    }
+                boxes[4].style.height="150px"
+                boxes[4].style.width="150px"
+            
+        })
+         const winner =(x)=>{
+            // document.querySelector(".winner").style.visibility= "visible";
+            // document.querySelector(".winner").innerText= `winner is ${x}`;
+            console.log(boxes[4].innerText);
+            boxes[4].style.height="250px"
+            boxes[4].style.width="250px"
+            boxes[4].innerText=`winner is ${x}`;
+            
+            
+         }
+        </script>
+</body>
+</html>

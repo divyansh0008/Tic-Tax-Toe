@@ -1,0 +1,41 @@
+body{
+    background-color: #344966;
+    text-align: center;
+}
+.heading{
+    text-align: center;
+}
+.single{
+    height: 150px;
+    width: 150px;
+    
+    background-image: url("user.png");
+    background-size: cover;
+    
+    background-color: #F0F4EF;
+    margin-left: 300px;
+    margin-top:100px;
+    
+}
+.double{
+    height: 150px;
+    width: 150px;
+    background-image: url("group.png");
+    background-size: cover;
+    margin-left: 650px;
+    margin-top:100px;
+    background-color: #F0F4EF;
+
+}
+.player{
+    display: flex;
+    
+    
+}
+.single:hover{
+    border: 4px solid black;
+}
+.double:hover{
+    border: 4px solid black;
+}
+.sig{}
